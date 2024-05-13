@@ -1,8 +1,13 @@
 {
   "manifest_version": 3,
   "name": "xPath Reader",
-  "version": "1.1",
-  "description": "This is xPath Reader!",
+  "version": "0.2",
+  "description": "Shows xPath on pointer enter",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["activeTab", "scripting", "storage"],
+    "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -11,5 +16,10 @@
       "128": "icons/icon128.png"
     }
   },
-  "permissions": ["activeTab"]
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+        }
+    ]
 }
